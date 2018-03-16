@@ -1,0 +1,18 @@
+{
+  "name": "algorithms-data-structures",
+  "version": "1.0.0",
+  "description": "This is my attempt to re-learn (and hopefully cement for all time in my mind) all the algorithms and data structures that I learned so long ago in college. I've not used many of them in a long time. This will be a good exercise that will hopefully keep me sharp and make simpler solutions to coding problems more apparent.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0"
+  }
+}
