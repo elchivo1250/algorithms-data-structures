@@ -1,0 +1,15 @@
+version: '3'
+services:
+    npm:
+        image: node:9.8.0-alpine
+        entrypoint: npm
+        working_dir: /src
+        volumes:
+            - "./:/src"
+    test:
+        image: node:9.8.0-alpine
+        entrypoint: npm
+        command: test
+        working_dir: /src
+        volumes:
+            - "./:/src"
