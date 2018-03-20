@@ -249,3 +249,23 @@ ava('Linked List remove data not found', (t) => {
     t.is(err.message, 'Data not found', 'The error message is incorrect');
 
 });
+
+ava('Linked List remove multiple from middle', (t) => {
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+
+    list.remove(3);
+    
+    t.is(list.length, 3, "The list's length is incorrect");
+
+    t.is(list.head.data, 1, "The head's data is incorrect");
+    t.is(list.searchIdx(0)[2].data, 1, "The head's data is incorrect");
+    t.is(list.searchIdx(1)[2].data, 2, "The second node's data is incorrect");
+    t.is(list.searchIdx(2)[2].data, 4, "The final node's data is incorrect");
+    t.is(list.searchIdx(2)[2].next, null, "The final node's data is incorrect");
+});
+
