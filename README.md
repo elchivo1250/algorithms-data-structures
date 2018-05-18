@@ -23,3 +23,19 @@ This is my attempt to re-learn (and hopefully cement for all time in my mind) al
 Average: **O(n)**
 
 Worst Case: **O(n)**
+
+## Stack
+
+### Time Complexity
+
+| Operation | Average  | Worst Case     |
+| ---------:|:--------:|:--------------:|
+| Search    | **O(n)** | **O(n)**       |
+| Insert    | **O(1)** | **O(1)**       |
+| Delete    | **O(1)** | **O(1)**       |
+
+### Space Complexity
+
+Average: **O(n)**
+
+Worst Case: **O(n)**
