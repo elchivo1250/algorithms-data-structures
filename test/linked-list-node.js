@@ -1,5 +1,4 @@
-import ava from 'ava'
-
+import ava from 'ava';
 const LinkedListNode = require('../lib/linked-list-node');
 
 ava('Linked List Node constructor', (t) => {
