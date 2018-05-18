@@ -39,3 +39,19 @@ Worst Case: **O(n)**
 Average: **O(n)**
 
 Worst Case: **O(n)**
+
+## Queue
+
+### Time Complexity
+
+| Operation | Average  | Worst Case     |
+| ---------:|:--------:|:--------------:|
+| Search    | **O(n)** | **O(n)**       |
+| Insert    | **O(1)** | **O(1)**       |
+| Delete    | **O(1)** | **O(1)**       |
+
+### Space Complexity
+
+Average: **O(n)**
+
+Worst Case: **O(n)**
