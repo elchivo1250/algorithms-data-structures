@@ -1,6 +1,6 @@
 import ava from 'ava'
-
 const LinkedList = require('../lib/linked-list');
+const LinkedListNode = require('../lib/linked-list-node');
 
 ava('Linked List constructor', (t) => {
     const list = new LinkedList();
@@ -103,7 +103,7 @@ ava('Linked List insert in middle', (t) => {
     list.append(2);
     list.append(4);
 
-    list.insert(2, 3);
+    list.searchIdxAndInsert(2, 3);
     
     t.is(list.length, 4, "The list's length is incorrect");
 
@@ -119,7 +119,9 @@ ava('Linked List insert at head', (t) => {
     list.append(1);
     list.append(2);
     list.append(3);
-    list.insert(0, 0);
+
+    const node = new LinkedListNode(0);
+    list.insertNodeAfter(null, node);
 
     t.is(list.length, 4, "The list's length is incorrect");
 
@@ -136,7 +138,7 @@ ava('Linked List insert at tail', (t) => {
     list.append(1);
     list.append(2);
 
-    list.insert(3, 3);
+    list.searchIdxAndInsert(list.length, 3);
 
     t.is(list.length, 4, "The list's length is incorrect");
 
@@ -152,14 +154,12 @@ ava('Linked List insert out of range - too high', (t) => {
     list.append(1);
     list.append(2);
 
-
     const err = t.throws(() => {
-        list.insert(5, 5);
+        list.searchIdxAndInsert(5, 5);
     });
 
     t.is(list.length, 3, "The list's length is incorrect");
     t.is(err.message, 'Insertion index out of range', 'The error message is incorrect');
-
 });
 
 ava('Linked List insert out of range - too low', (t) => {
@@ -169,9 +169,8 @@ ava('Linked List insert out of range - too low', (t) => {
     list.append(1);
     list.append(2);
 
-
     const err = t.throws(() => {
-        list.insert(-1, -1);
+        list.searchIdxAndInsert(-1, 5);
     });
 
     t.is(list.length, 3, "The list's length is incorrect");
@@ -186,7 +185,7 @@ ava('Linked List remove from middle', (t) => {
     list.append(3);
     list.append(4);
 
-    list.remove(3);
+    list.searchAndRemove(3);
     
     t.is(list.length, 3, "The list's length is incorrect");
 
@@ -205,7 +204,7 @@ ava('Linked List remove from head', (t) => {
     list.append(3);
     list.append(4);
 
-    list.remove(1);
+    list.searchAndRemove(1);
 
     t.is(list.length, 3, "The list's length is incorrect");
 
@@ -224,7 +223,7 @@ ava('Linked List removed from tail', (t) => {
     list.append(2);
     list.append(3);
 
-    list.remove(3);
+    list.searchAndRemove(3);
 
     t.is(list.length, 3, "The list's length is incorrect");
 
@@ -242,7 +241,7 @@ ava('Linked List remove data not found', (t) => {
     list.append(3);
 
     const err = t.throws(() => {
-        list.remove(4);
+        list.searchAndRemove(4);
     });
 
     t.is(list.length, 4, "The list's length is incorrect");
@@ -258,14 +257,13 @@ ava('Linked List remove multiple from middle', (t) => {
     list.append(3);
     list.append(4);
 
-    list.remove(3);
+    const node = list.search(2)[2];
+    list.removeNodeAfter(node);
+    list.removeNodeAfter(node);
     
-    t.is(list.length, 3, "The list's length is incorrect");
+    t.is(list.length, 2, "The list's length is incorrect");
 
     t.is(list.head.data, 1, "The head's data is incorrect");
-    t.is(list.searchIdx(0)[2].data, 1, "The head's data is incorrect");
-    t.is(list.searchIdx(1)[2].data, 2, "The second node's data is incorrect");
-    t.is(list.searchIdx(2)[2].data, 4, "The final node's data is incorrect");
-    t.is(list.searchIdx(2)[2].next, null, "The final node's data is incorrect");
+    t.is(list.searchIdx(1)[2].next, null, "The final node's data is incorrect");
 });
 
