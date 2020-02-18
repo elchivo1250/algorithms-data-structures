@@ -1,4 +1,4 @@
-import ava from 'ava';
+const ava = require('ava');
 const Queue = require('../lib/queue');
 
 ava('Queue constructor', (t) => {
@@ -29,7 +29,7 @@ ava('Queue constructor with bad param (number)', (t) => {
 
     t.throws(() => {
         const q = new Queue(data);
-    }, TypeError);
+    }, {instanceOf: TypeError});
 });
 
 ava('Queue constructor with bad param (object)', (t) => {
@@ -37,7 +37,7 @@ ava('Queue constructor with bad param (object)', (t) => {
 
     t.throws(() => {
         const q = new Queue(data);
-    }, TypeError);
+    }, {instanceOf: TypeError});
 });
 
 ava('Queue enqueue', (t) => {
