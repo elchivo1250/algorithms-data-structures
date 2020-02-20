@@ -55,3 +55,16 @@ Worst Case: **O(n)**
 Average: **O(n)**
 
 Worst Case: **O(n)**
+
+## Binary Tree
+
+## Binary Search Tree
+
+## Heap
+
+## Hashing
+
+## Graph
+
+## Matrix
+
