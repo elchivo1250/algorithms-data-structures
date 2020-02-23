@@ -211,3 +211,29 @@ ava('Binary Tree node delete', (t) => {
 
     t.deepEqual(out, expected, 'The output is incorrect');
 });
+
+ava('Check if a binary tree is continuous that should be', (t) => {
+    const tree = new BinaryTree();
+
+    tree.root = new BinaryTreeNode(3);
+    tree.root.left = new BinaryTreeNode(2);
+    tree.root.right = new BinaryTreeNode(4);
+    tree.root.left.left = new BinaryTreeNode(1);
+    tree.root.left.right = new BinaryTreeNode(3);
+    tree.root.right.right = new BinaryTreeNode(5);
+
+    t.true(tree.isContinuous(tree.root), 'The tree is not continuous but should be');
+});
+
+ava("Check if a binary tree is continuous that shouldn't be", (t) => {
+    const tree = new BinaryTree();
+
+    tree.root = new BinaryTreeNode(7);
+    tree.root.left = new BinaryTreeNode(5);
+    tree.root.right = new BinaryTreeNode(8);
+    tree.root.left.left = new BinaryTreeNode(6);
+    tree.root.left.right = new BinaryTreeNode(4);
+    tree.root.right.right = new BinaryTreeNode(10);
+
+    t.false(tree.isContinuous(tree.root), 'The tree is not continuous but should be');
+});
