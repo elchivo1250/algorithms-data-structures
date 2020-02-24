@@ -29,7 +29,7 @@ ava('Stack constructor with bad param (number)', (t) => {
 
     t.throws(() => {
         const s = new Stack(data);
-    }, {instanceOf: TypeError});
+    }, TypeError);
 });
 
 ava('Stack constructor with bad param (object)', (t) => {
@@ -37,7 +37,7 @@ ava('Stack constructor with bad param (object)', (t) => {
 
     t.throws(() => {
         const s = new Stack(data);
-    }, {instanceOf: TypeError});
+    }, TypeError);
 });
 
 ava('Stack push', (t) => {

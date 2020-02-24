@@ -29,7 +29,7 @@ ava('Queue constructor with bad param (number)', (t) => {
 
     t.throws(() => {
         const q = new Queue(data);
-    }, {instanceOf: TypeError});
+    }, TypeError);
 });
 
 ava('Queue constructor with bad param (object)', (t) => {
@@ -37,7 +37,7 @@ ava('Queue constructor with bad param (object)', (t) => {
 
     t.throws(() => {
         const q = new Queue(data);
-    }, {instanceOf: TypeError});
+    }, TypeError);
 });
 
 ava('Queue enqueue', (t) => {
