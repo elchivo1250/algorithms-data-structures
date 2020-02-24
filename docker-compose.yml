@@ -1,14 +1,14 @@
 version: '3'
 services:
     npm:
-        image: node:13
+        image: node:13.8
         entrypoint: npm
         working_dir: /src
         volumes:
             - "./:/src"
 
     test:
-        image: node:13-alpine
+        image: node:13.8-alpine
         entrypoint: npm
         command: test
         working_dir: /src
