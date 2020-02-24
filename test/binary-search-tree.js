@@ -304,27 +304,26 @@ ava('Binary Search Tree Insert', (t) => {
     const expectedSearchLefts = [null, null, null, 11, 4, 1];
     const expectedSearchRights = [null, null, null, 14, null, 6];
 
-    t.deepEqual(searchNodes[0].data, expectedSearchData[0], 'The data returned for search index 0 was incorrect');
-    t.deepEqual(searchNodes[0].left, expectedSearchLefts[0], 'The left node returned for search index 0 was incorrect');
-    t.deepEqual(searchNodes[0].right, expectedSearchRights[0], 'The right node returned for search index 0 was incorrect');
+    searchNodes.map((searchNode, idx) => {
+        if (searchNode == null) {
+            t.deepEqual(searchNode, expectedSearchData[idx], `The data returned for search index ${idx} was incorrect`);
+            return;
+        }
 
-    t.deepEqual(searchNodes[1], expectedSearchData[1], 'The data returned for search index 1 was incorrect');
+        t.deepEqual(searchNode.data, expectedSearchData[idx], `The data returned for search index ${idx} was incorrect`);
 
-    t.deepEqual(searchNodes[2].data, expectedSearchData[2], 'The data returned for search index 2 was incorrect');
-    t.deepEqual(searchNodes[2].left, expectedSearchLefts[2], 'The left node returned for search index 2 was incorrect');
-    t.deepEqual(searchNodes[2].right, expectedSearchRights[2], 'The right node returned for search index 2 was incorrect');
+        if (searchNode.left == null) {
+            t.deepEqual(searchNode.left, expectedSearchLefts[idx], `The left node returned for search index ${idx} was incorrect`);
+        } else {
+            t.deepEqual(searchNode.left.data, expectedSearchLefts[idx], `The left node returned for search index ${idx} was incorrect`);
+        }
 
-    t.deepEqual(searchNodes[3].data, expectedSearchData[3], 'The data returned for search index 3 was incorrect');
-    t.deepEqual(searchNodes[3].left.data, expectedSearchLefts[3], 'The left node returned for search index 3 was incorrect');
-    t.deepEqual(searchNodes[3].right.data, expectedSearchRights[3], 'The right node returned for search index 3 was incorrect');
-
-    t.deepEqual(searchNodes[4].data, expectedSearchData[4], 'The data returned for search index 4 was incorrect');
-    t.deepEqual(searchNodes[4].left.data, expectedSearchLefts[4], 'The left node returned for search index 4 was incorrect');
-    t.deepEqual(searchNodes[4].right, expectedSearchRights[4], 'The right node returned for search index 4 was incorrect');
-
-    t.deepEqual(searchNodes[5].data, expectedSearchData[5], 'The data returned for search index 5 was incorrect');
-    t.deepEqual(searchNodes[5].left.data, expectedSearchLefts[5], 'The left node returned for search index 5 was incorrect');
-    t.deepEqual(searchNodes[5].right.data, expectedSearchRights[5], 'The right node returned for search index 5 was incorrect');
+        if (searchNode.right == null) {
+            t.deepEqual(searchNode.right, expectedSearchRights[idx], `The right node returned for search index ${idx} was incorrect`);
+        } else {
+            t.deepEqual(searchNode.right.data, expectedSearchRights[idx], `The right node returned for search index ${idx} was incorrect`);
+        }
+    });
 });
 
 const printTree = (tree) => {
