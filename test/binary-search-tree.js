@@ -193,25 +193,6 @@ ava('Binary Search Tree node insert', (t) => {
     t.deepEqual(out, expected, 'The output is incorrect');
 });
 
-ava('Binary Search Tree node delete', (t) => {
-    const tree = new BinarySearchTree(1);
-
-    tree.insert(new BinaryTreeNode(2));
-    tree.insert(new BinaryTreeNode(3));
-    tree.insert(new BinaryTreeNode(4));
-    tree.insert(new BinaryTreeNode(5));
-    tree.insert(new BinaryTreeNode(6));
-
-    tree.delete(2);
-
-    const expected = [1, 6, 4, 5, 3];
-
-    const out = [];
-    tree.preOrderStack(out);
-
-    t.deepEqual(out, expected, 'The output is incorrect');
-});
-
 ava('Check if a binary search tree is continuous that should be', (t) => {
     const tree = new BinarySearchTree();
 
@@ -272,7 +253,7 @@ ava('Binary Search Tree Insert', (t) => {
     t.deepEqual(out, expectedInOrder, 'The preorder traversal was incorrect');
 });
 
-ava('Binary Search Tree Insert', (t) => {
+ava('Binary Search Tree BST Insert', (t) => {
     const tree = new BinarySearchTree(8);
     tree.insertBST(new BinaryTreeNode(7));
     tree.insertBST(new BinaryTreeNode(3));
@@ -324,6 +305,64 @@ ava('Binary Search Tree Insert', (t) => {
             t.deepEqual(searchNode.right.data, expectedSearchRights[idx], `The right node returned for search index ${idx} was incorrect`);
         }
     });
+});
+
+ava('Binary search tree delete root using a stack', (t) => {
+    const tree = new BinarySearchTree(4);
+    tree.insertBST(new BinaryTreeNode(2));
+    tree.insertBST(new BinaryTreeNode(6));
+    tree.insertBST(new BinaryTreeNode(1));
+    tree.insertBST(new BinaryTreeNode(3));
+    tree.insertBST(new BinaryTreeNode(5));
+    tree.insertBST(new BinaryTreeNode(7));
+
+    tree.deleteNodeStack(4);
+
+    let out = [];
+    tree.inOrderStack(out);
+
+    const expected = [1, 2, 3, 5, 6, 7];
+
+    t.deepEqual(out, expected, `The inorder output did not match the expected output`);
+});
+
+ava('Binary search tree delete leaf using a stack', (t) => {
+    const tree = new BinarySearchTree(4);
+    tree.insertBST(new BinaryTreeNode(2));
+    tree.insertBST(new BinaryTreeNode(6));
+    tree.insertBST(new BinaryTreeNode(1));
+    tree.insertBST(new BinaryTreeNode(3));
+    tree.insertBST(new BinaryTreeNode(5));
+    tree.insertBST(new BinaryTreeNode(7));
+
+    tree.deleteNodeStack(1);
+
+    let out = [];
+    tree.inOrderStack(out);
+
+    const expected = [2, 3, 4, 5, 6, 7];
+
+    t.deepEqual(out, expected, `The inorder output did not match the expected output`);
+});
+
+ava('Binary search tree delete node with one child using a stack', (t) => {
+    const tree = new BinarySearchTree(4);
+    tree.insertBST(new BinaryTreeNode(2));
+    tree.insertBST(new BinaryTreeNode(6));
+    tree.insertBST(new BinaryTreeNode(1));
+    tree.insertBST(new BinaryTreeNode(3));
+    tree.insertBST(new BinaryTreeNode(5));
+    tree.insertBST(new BinaryTreeNode(7));
+    tree.insertBST(new BinaryTreeNode(8));
+
+    tree.deleteNodeStack(8);
+
+    let out = [];
+    tree.inOrderStack(out);
+
+    const expected = [1, 2, 3, 4, 5, 6, 7];
+
+    t.deepEqual(out, expected, `The inorder output did not match the expected output`);
 });
 
 const printTree = (tree) => {
